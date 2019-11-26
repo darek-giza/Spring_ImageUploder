@@ -5,6 +5,7 @@ target/
 !**/src/test/**
 node_modules
 .mvn
+.mvn*
 
 ### STS ###
 .apt_generated

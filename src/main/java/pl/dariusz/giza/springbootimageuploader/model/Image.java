@@ -12,13 +12,13 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imageAdress;
+    private String imageAddress;
 
     public Image() {
     }
 
     public Image(String imageAdress) {
-        this.imageAdress = imageAdress;
+        this.imageAddress = imageAdress;
     }
 
     public Long getId() {
@@ -29,11 +29,11 @@ public class Image {
         this.id = id;
     }
 
-    public String getImageAdress() {
-        return imageAdress;
+    public String getImageAddress() {
+        return imageAddress;
     }
 
-    public void setImageAdress(String imageAdress) {
-        this.imageAdress = imageAdress;
+    public void setImageAddress(String imageAddress) {
+        this.imageAddress = imageAddress;
     }
 }
