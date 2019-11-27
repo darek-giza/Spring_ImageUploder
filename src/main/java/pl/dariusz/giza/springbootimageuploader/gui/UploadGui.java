@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.dariusz.giza.springbootimageuploader.ImageUploader;
 
 
-@Route("uploadImage")
+@Route("upload")
 public class UploadGui extends VerticalLayout {
 
     private ImageUploader imageUploader;
