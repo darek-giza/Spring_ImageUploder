@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AppUserRepository appUserRepository;
 
     @Autowired
-    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService,AppUserRepository appUserRepository) {
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AppUserRepository appUserRepository) {
         this.userDetailsService = userDetailsService;
         this.appUserRepository = appUserRepository;
     }
@@ -36,15 +36,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/test1").hasAnyRole("USER","ADMIN")
+                .antMatchers("/login").permitAll()
                 .antMatchers("/upload").hasRole("ADMIN")
-                .antMatchers("/gallery").hasAnyRole("USER","ADMIN")
+                .antMatchers("/gallery").hasAnyRole("USER", "ADMIN")
                 .and()
-                .formLogin().permitAll()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/login")
                 .and()
                 .csrf().disable();
-
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -52,9 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void get(){
-        AppUser appUserUser=new AppUser("Darek",passwordEncoder().encode("root"),"ROLE_USER");
-        AppUser appUserAdmin=new AppUser("Admin",passwordEncoder().encode("root"),"ROLE_ADMIN");
+    public void get() {
+        AppUser appUserUser = new AppUser("Darek", passwordEncoder().encode("root"), "ROLE_USER");
+        AppUser appUserAdmin = new AppUser("Admin", passwordEncoder().encode("root"), "ROLE_ADMIN");
         appUserRepository.save(appUserUser);
         appUserRepository.save(appUserAdmin);
     }

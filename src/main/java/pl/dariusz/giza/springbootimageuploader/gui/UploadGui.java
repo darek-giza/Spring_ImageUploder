@@ -7,11 +7,14 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.dariusz.giza.springbootimageuploader.ImageUploader;
 
 
 @Route("upload")
+@Theme(value = Lumo.class, variant = Lumo.DARK)
 public class UploadGui extends VerticalLayout {
 
     private ImageUploader imageUploader;
@@ -19,7 +22,6 @@ public class UploadGui extends VerticalLayout {
     @Autowired
     public UploadGui(ImageUploader imageUploader) {
         this.imageUploader = imageUploader;
-
 
         Label label = new Label("IMAGE ADDED SUCCESSFULLY");
         TextField textField = new TextField();
