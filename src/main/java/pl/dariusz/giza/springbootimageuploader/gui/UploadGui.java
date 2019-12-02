@@ -9,13 +9,16 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.ImageUploader;
 
-
+@Component
 @Route("upload")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
-public class UploadGui extends VerticalLayout {
+public class UploadGui extends VerticalLayout implements View {
 
     private ImageUploader imageUploader;
 
@@ -35,6 +38,11 @@ public class UploadGui extends VerticalLayout {
         });
         add(textField);
         add(button);
+
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
 
     }
 }
