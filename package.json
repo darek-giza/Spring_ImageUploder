@@ -11,12 +11,12 @@
     "copy-webpack-plugin": "5.0.3",
     "raw-loader": "3.0.0",
     "webpack": "4.30.0",
-    "webpack-babel-multi-target-plugin": "2.1.0",
+    "webpack-babel-multi-target-plugin": "2.3.1",
     "webpack-cli": "3.3.0",
     "webpack-dev-server": "3.3.0",
     "webpack-merge": "4.2.1"
   },
-  "vaadinAppPackageHash": "4f9f2f31c452015acac83a1bd613fb6c2acb4ac9e48048a74a16c25034f8f054",
+  "vaadinAppPackageHash": "4282356a33da234edb69b20c78397eda9c482c06c96005f394a4f735446bacf3",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

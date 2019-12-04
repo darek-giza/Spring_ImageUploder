@@ -1,50 +1,51 @@
 package pl.dariusz.giza.springbootimageuploader;
 
+
+import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.InitialPageSettings;
-import com.vaadin.flow.server.PageConfigurator;
-import com.vaadin.navigator.Navigator;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.*;
-import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.flow.router.RouterLink;
+import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.gui.DefaultView;
 import pl.dariusz.giza.springbootimageuploader.gui.GalleryGui;
+import pl.dariusz.giza.springbootimageuploader.gui.LoginView;
 import pl.dariusz.giza.springbootimageuploader.gui.UploadGui;
 
 @Route
-public class MainView extends UI implements PageConfigurator {
-    @Override
-    protected void init(VaadinRequest request) {
-
-        Label title = new Label("Menu");
-        title.addStyleName(ValoTheme.MENU_TITLE);
-
-        Button upload = new Button("Upload ", e -> getNavigator().navigateTo("upload"));
-        upload.addStyleName(ValoTheme.BUTTON_LINK);
-
-        Button gallery = new Button("Gallery ", e -> getNavigator().navigateTo("gallery"));
-        gallery.addStyleName(ValoTheme.BUTTON_LINK);
-
-        CssLayout menu = new CssLayout(title, upload, gallery);
-        menu.addStyleName(ValoTheme.MENU_ROOT);
-
-        CssLayout viewContainer = new CssLayout();
-
-        HorizontalLayout mainLayout = new HorizontalLayout(menu, viewContainer);
-        mainLayout.setSizeFull();
-        mainLayout.addComponent(mainLayout);
+@Component
+public class MainView extends VerticalLayout {
 
 
-      Navigator navigator = new Navigator(this, viewContainer);
-        navigator.addView("", DefaultView.class);
-        navigator.addView("upload", UploadGui.class);
-        navigator.addView("gallery", GalleryGui.class);
+    public MainView() {
 
+        VerticalLayout layout = new VerticalLayout();
+
+        layout.setMargin(true);
+        layout.setSpacing(true);
+
+        MenuBar menuBar = new MenuBar();
+
+        MenuItem menu = menuBar.addItem("MENU", i -> getUI().ifPresent(ui -> ui.navigate("")));
+        MenuItem gallery = menuBar.addItem("GALLERY", i -> getUI().ifPresent(ui -> ui.navigate("gallery")));
+        MenuItem upload = menuBar.addItem("UPLOAD", i -> getUI().ifPresent(ui -> ui.navigate("upload")));
+        MenuItem fault = menuBar.addItem("DEFAULT", i -> getUI().ifPresent(ui -> ui.navigate("defoult")));
+        MenuItem login = menuBar.addItem("LOGIN", i -> getUI().ifPresent(ui -> ui.navigate("login")));
+        MenuItem logout = menuBar.addItem("LOGOUT", i -> getUI().ifPresent(ui -> ui.navigate("logout")));
+
+        layout.add(menuBar);
+
+        add(layout);
     }
 
-    @Override
-    public void configurePage(InitialPageSettings initialPageSettings) {
 
-
+    void routerLink() {
+        Div menu = new Div();
+        menu.add(new RouterLink("Default", DefaultView.class));
+        menu.add(new RouterLink("Gallery", GalleryGui.class));
+        menu.add(new RouterLink("Upload", UploadGui.class));
+        menu.add(new RouterLink("Login", LoginView.class));
+        menu.add(new RouterLink("", MainView.class));
     }
 }

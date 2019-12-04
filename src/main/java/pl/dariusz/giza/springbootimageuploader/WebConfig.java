@@ -9,7 +9,7 @@ public class WebConfig {
 
 
     @WebServlet(urlPatterns = "/", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MainView.class, productionMode = false)
+//    @VaadinServletConfiguration(ui = MainView.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
 
     }
