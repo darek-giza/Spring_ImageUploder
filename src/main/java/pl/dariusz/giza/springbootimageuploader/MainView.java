@@ -13,7 +13,7 @@ import pl.dariusz.giza.springbootimageuploader.gui.GalleryGui;
 import pl.dariusz.giza.springbootimageuploader.gui.LoginView;
 import pl.dariusz.giza.springbootimageuploader.gui.UploadGui;
 
-@Route
+@Route("")
 @Component
 public class MainView extends VerticalLayout {
 
@@ -27,19 +27,19 @@ public class MainView extends VerticalLayout {
 
         MenuBar menuBar = new MenuBar();
 
-        MenuItem menu = menuBar.addItem("MENU", i -> getUI().ifPresent(ui -> ui.navigate("")));
+        menuBar.getStyle().set("margin-left","auto");
+        menuBar.getStyle().set("margin-right","auto");
+
+        MenuItem menu = menuBar.addItem("START", i -> getUI().ifPresent(ui -> ui.navigate("")));
         MenuItem gallery = menuBar.addItem("GALLERY", i -> getUI().ifPresent(ui -> ui.navigate("gallery")));
         MenuItem upload = menuBar.addItem("UPLOAD", i -> getUI().ifPresent(ui -> ui.navigate("upload")));
-        MenuItem fault = menuBar.addItem("DEFAULT", i -> getUI().ifPresent(ui -> ui.navigate("defoult")));
+        MenuItem fault = menuBar.addItem("DEFAULT", i -> getUI().ifPresent(ui -> ui.navigate("default")));
         MenuItem login = menuBar.addItem("LOGIN", i -> getUI().ifPresent(ui -> ui.navigate("login")));
         MenuItem logout = menuBar.addItem("LOGOUT", i -> getUI().ifPresent(ui -> ui.navigate("logout")));
 
         layout.add(menuBar);
-
         add(layout);
     }
-
-
     void routerLink() {
         Div menu = new Div();
         menu.add(new RouterLink("Default", DefaultView.class));

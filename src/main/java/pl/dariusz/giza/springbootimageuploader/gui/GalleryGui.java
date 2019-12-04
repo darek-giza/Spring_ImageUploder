@@ -1,11 +1,11 @@
 package pl.dariusz.giza.springbootimageuploader.gui;
 
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.dariusz.giza.springbootimageuploader.MainView;
 import pl.dariusz.giza.springbootimageuploader.model.Image;
 import pl.dariusz.giza.springbootimageuploader.repository.ImageRepo;
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 @Route("gallery")
-public class GalleryGui extends VerticalLayout implements View {
+public class GalleryGui extends MainView implements View {
 
 
     private ImageRepo imageRepo;

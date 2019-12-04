@@ -4,7 +4,6 @@ package pl.dariusz.giza.springbootimageuploader.gui;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
@@ -14,11 +13,12 @@ import com.vaadin.navigator.ViewChangeListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.ImageUploader;
+import pl.dariusz.giza.springbootimageuploader.MainView;
 
 @Component
 @Route("upload")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
-public class UploadGui extends VerticalLayout implements View {
+public class UploadGui extends MainView implements View {
 
     private ImageUploader imageUploader;
 

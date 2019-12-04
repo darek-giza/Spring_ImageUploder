@@ -8,20 +8,27 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import pl.dariusz.giza.springbootimageuploader.MainView;
 
 @Route("login")
 @Tag("sa-login-view")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 @PageTitle("Login")
-public class LoginView extends VerticalLayout {
-
-    private VerticalLayout layout = new VerticalLayout();
-
-    private LoginForm login = new LoginForm();
+public class LoginView extends MainView {
 
     public LoginView() {
 
-        setHorizontalComponentAlignment(Alignment.CENTER, login);
+
+        VerticalLayout layout = new VerticalLayout();
+
+        LoginForm login = new LoginForm();
+
+
+
+        layout.add(login);
+
+        layout.setHorizontalComponentAlignment(Alignment.CENTER,login);
+
         login.setAction("login");
         getElement().appendChild(login.getElement());
 
