@@ -5,7 +5,6 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.gui.DefaultView;
@@ -13,8 +12,6 @@ import pl.dariusz.giza.springbootimageuploader.gui.GalleryGui;
 import pl.dariusz.giza.springbootimageuploader.gui.LoginView;
 import pl.dariusz.giza.springbootimageuploader.gui.UploadGui;
 
-@Route("")
-@Component
 public class MainView extends VerticalLayout {
 
 

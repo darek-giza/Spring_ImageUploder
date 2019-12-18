@@ -11,11 +11,9 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.ImageUploader;
 import pl.dariusz.giza.springbootimageuploader.MainView;
 
-@Component
 @Route("upload")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 public class UploadGui extends MainView implements View {
