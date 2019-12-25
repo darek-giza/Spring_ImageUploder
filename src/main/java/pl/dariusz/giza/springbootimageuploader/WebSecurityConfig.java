@@ -1,6 +1,5 @@
 package pl.dariusz.giza.springbootimageuploader;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
@@ -14,13 +13,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.dariusz.giza.springbootimageuploader.model.AppUser;
 import pl.dariusz.giza.springbootimageuploader.repository.AppUserRepository;
 
-
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     private UserDetailsServiceImpl userDetailsService;
     private AppUserRepository appUserRepository;
+
+    private static final String LOGIN_URL = "/login";
+    private static final String LOGIN_PROCESSING_URL = "/login";
+    private static final String LOGIN_FAILURE_URL = "/login?error";
+    private static final String LOGOUT_SUCCESS_URL = "/login";
 
     @Autowired
     public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AppUserRepository appUserRepository) {
@@ -38,15 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/upload").hasRole("ADMIN")
-                .antMatchers("/gallery").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/default").permitAll()
-                .antMatchers("/logout").permitAll()
-                .and()
-                .formLogin().loginPage("/login")
-                .and()
-                .logout().logoutSuccessUrl("/login")
-                .and()
-                .csrf().disable();
+                .antMatchers("*","/main","/gallery","/default","/start").hasAnyRole("USER","ADMIN")
+                .and().formLogin().loginPage(LOGIN_URL).permitAll()
+                .loginProcessingUrl(LOGIN_PROCESSING_URL)
+                .failureUrl(LOGIN_FAILURE_URL)
+                .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL)
+                .and().csrf().disable();
     }
 
 

@@ -4,9 +4,9 @@ package pl.dariusz.giza.springbootimageuploader;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
-import org.springframework.stereotype.Component;
 import pl.dariusz.giza.springbootimageuploader.gui.DefaultView;
 import pl.dariusz.giza.springbootimageuploader.gui.GalleryGui;
 import pl.dariusz.giza.springbootimageuploader.gui.LoginView;
@@ -21,6 +21,11 @@ public class MainView extends VerticalLayout {
 
         layout.setMargin(true);
         layout.setSpacing(true);
+        layout.setHeight("100px");
+
+        layout.setJustifyContentMode(FlexComponent.JustifyContentMode.AROUND);
+
+        layout.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
 
         MenuBar menuBar = new MenuBar();
 
