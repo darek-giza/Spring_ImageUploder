@@ -29,10 +29,9 @@ public class MainView extends VerticalLayout {
 
         MenuBar menuBar = new MenuBar();
 
-        menuBar.getStyle().set("margin-left","auto");
-        menuBar.getStyle().set("margin-right","auto");
+        menuBar.getStyle().set("margin-left", "auto");
+        menuBar.getStyle().set("margin-right", "auto");
 
-        MenuItem menu = menuBar.addItem("START", i -> getUI().ifPresent(ui -> ui.navigate("")));
         MenuItem gallery = menuBar.addItem("GALLERY", i -> getUI().ifPresent(ui -> ui.navigate("gallery")));
         MenuItem upload = menuBar.addItem("UPLOAD", i -> getUI().ifPresent(ui -> ui.navigate("upload")));
         MenuItem fault = menuBar.addItem("DEFAULT", i -> getUI().ifPresent(ui -> ui.navigate("default")));
@@ -42,12 +41,12 @@ public class MainView extends VerticalLayout {
         layout.add(menuBar);
         add(layout);
     }
+
     void routerLink() {
         Div menu = new Div();
         menu.add(new RouterLink("Default", DefaultView.class));
         menu.add(new RouterLink("Gallery", GalleryGui.class));
         menu.add(new RouterLink("Upload", UploadGui.class));
         menu.add(new RouterLink("Login", LoginView.class));
-        menu.add(new RouterLink("", MainView.class));
     }
 }

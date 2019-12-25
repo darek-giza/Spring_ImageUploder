@@ -59,7 +59,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void navigateToMainPage() {
-        this.getUI().ifPresent(ui->ui.navigate("/start"));
+        this.getUI().ifPresent(ui -> ui.navigate(DefaultView.class));
     }
 
     @Override

@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/upload").hasRole("ADMIN")
-                .antMatchers("*","/main","/gallery","/default","/start").hasAnyRole("USER","ADMIN")
+                .antMatchers("/main", "/gallery", "/default", "/start").hasAnyRole("USER", "ADMIN")
                 .and().formLogin().loginPage(LOGIN_URL).permitAll()
                 .loginProcessingUrl(LOGIN_PROCESSING_URL)
                 .failureUrl(LOGIN_FAILURE_URL)
